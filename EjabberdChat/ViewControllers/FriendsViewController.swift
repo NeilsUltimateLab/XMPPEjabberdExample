@@ -9,18 +9,6 @@
 import UIKit
 import XMPPFramework
 
-class User {
-    var userName: String = ""
-    var status: String?
-    var presence: String?
-}
-
-extension User {
-    var jid: XMPPJID? {
-        return XMPPJID(string: userName)
-    }
-}
-
 class FriendsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!

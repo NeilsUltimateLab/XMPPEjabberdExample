@@ -14,7 +14,7 @@
 		D23A0F7E2157A5BE001F81B2 /* KeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A0F7D2157A5BE001F81B2 /* KeyboardInputView.swift */; };
 		D23A0F802157AF77001F81B2 /* ChatTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A0F7F2157AF77001F81B2 /* ChatTitleView.swift */; };
 		D23A0F822157AF87001F81B2 /* ChatTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23A0F812157AF87001F81B2 /* ChatTitleView.xib */; };
-		D23A0F842157B2AE001F81B2 /* CellRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A0F832157B2AD001F81B2 /* CellRegistering.swift */; };
+		D23BC1CF2157D253006C7110 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BC1CE2157D253006C7110 /* ProfileViewController.swift */; };
 		D24E87F8215405F60073C018 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E87F7215405F60073C018 /* FriendsViewController.swift */; };
 		D25E9282214CEF1D003BD3E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E9281214CEF1D003BD3E6 /* AppDelegate.swift */; };
 		D25E9284214CEF1D003BD3E6 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E9283214CEF1D003BD3E6 /* ChatViewController.swift */; };
@@ -23,6 +23,11 @@
 		D25E928C214CEF1E003BD3E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D25E928A214CEF1E003BD3E6 /* LaunchScreen.storyboard */; };
 		D25E9294214D029E003BD3E6 /* LoginRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E9293214D029E003BD3E6 /* LoginRegisterViewController.swift */; };
 		D25E9296214D0749003BD3E6 /* StreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E9295214D0749003BD3E6 /* StreamManager.swift */; };
+		D29BD9542157D41D0044C8D7 /* CellRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29BD9532157D41D0044C8D7 /* CellRegistering.swift */; };
+		D29BD9562157D44C0044C8D7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29BD9552157D44C0044C8D7 /* User.swift */; };
+		D29BD9592157D4C90044C8D7 /* StreamManager+StreamDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29BD9582157D4C90044C8D7 /* StreamManager+StreamDelegate.swift */; };
+		D29BD95B2157D4D20044C8D7 /* StreamManager+RosterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29BD95A2157D4D20044C8D7 /* StreamManager+RosterDelegate.swift */; };
+		D29BD95D2157D4E10044C8D7 /* StreamManager+vCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29BD95C2157D4E10044C8D7 /* StreamManager+vCardDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +40,7 @@
 		D23A0F7D2157A5BE001F81B2 /* KeyboardInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInputView.swift; sourceTree = "<group>"; };
 		D23A0F7F2157AF77001F81B2 /* ChatTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleView.swift; sourceTree = "<group>"; };
 		D23A0F812157AF87001F81B2 /* ChatTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTitleView.xib; sourceTree = "<group>"; };
-		D23A0F832157B2AD001F81B2 /* CellRegistering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellRegistering.swift; sourceTree = "<group>"; };
+		D23BC1CE2157D253006C7110 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D24E87F7215405F60073C018 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		D25E927E214CEF1D003BD3E6 /* EjabberdChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EjabberdChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25E9281214CEF1D003BD3E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +51,11 @@
 		D25E928D214CEF1E003BD3E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D25E9293214D029E003BD3E6 /* LoginRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewController.swift; sourceTree = "<group>"; };
 		D25E9295214D0749003BD3E6 /* StreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamManager.swift; sourceTree = "<group>"; };
+		D29BD9532157D41D0044C8D7 /* CellRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRegistering.swift; sourceTree = "<group>"; };
+		D29BD9552157D44C0044C8D7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D29BD9582157D4C90044C8D7 /* StreamManager+StreamDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StreamManager+StreamDelegate.swift"; sourceTree = "<group>"; };
+		D29BD95A2157D4D20044C8D7 /* StreamManager+RosterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StreamManager+RosterDelegate.swift"; sourceTree = "<group>"; };
+		D29BD95C2157D4E10044C8D7 /* StreamManager+vCardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StreamManager+vCardDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D23BC1D02157D337006C7110 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D25E9293214D029E003BD3E6 /* LoginRegisterViewController.swift */,
+				D25E9283214CEF1D003BD3E6 /* ChatViewController.swift */,
+				D24E87F7215405F60073C018 /* FriendsViewController.swift */,
+				D23BC1CE2157D253006C7110 /* ProfileViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D23BC1D12157D376006C7110 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D29BD9532157D41D0044C8D7 /* CellRegistering.swift */,
+				D21C52B7214E17F4004839AF /* ChatCell.swift */,
+				D21C52B8214E17F4004839AF /* ChatCell.xib */,
+				D23A0F7D2157A5BE001F81B2 /* KeyboardInputView.swift */,
+				D23A0F7F2157AF77001F81B2 /* ChatTitleView.swift */,
+				D23A0F812157AF87001F81B2 /* ChatTitleView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D25E9275214CEF1D003BD3E6 = {
 			isa = PBXGroup;
 			children = (
@@ -99,23 +133,28 @@
 			isa = PBXGroup;
 			children = (
 				D25E9281214CEF1D003BD3E6 /* AppDelegate.swift */,
-				D23A0F7B21578F00001F81B2 /* Attribute.swift */,
-				D25E9295214D0749003BD3E6 /* StreamManager.swift */,
-				D25E9283214CEF1D003BD3E6 /* ChatViewController.swift */,
-				D24E87F7215405F60073C018 /* FriendsViewController.swift */,
-				D21C52B7214E17F4004839AF /* ChatCell.swift */,
-				D23A0F7D2157A5BE001F81B2 /* KeyboardInputView.swift */,
-				D23A0F832157B2AD001F81B2 /* CellRegistering.swift */,
-				D23A0F7F2157AF77001F81B2 /* ChatTitleView.swift */,
-				D23A0F812157AF87001F81B2 /* ChatTitleView.xib */,
-				D21C52B8214E17F4004839AF /* ChatCell.xib */,
-				D25E9293214D029E003BD3E6 /* LoginRegisterViewController.swift */,
+				D29BD9572157D4920044C8D7 /* Modal */,
+				D23BC1D02157D337006C7110 /* ViewControllers */,
+				D23BC1D12157D376006C7110 /* Views */,
 				D25E9285214CEF1D003BD3E6 /* Main.storyboard */,
 				D25E9288214CEF1E003BD3E6 /* Assets.xcassets */,
 				D25E928A214CEF1E003BD3E6 /* LaunchScreen.storyboard */,
 				D25E928D214CEF1E003BD3E6 /* Info.plist */,
 			);
 			path = EjabberdChat;
+			sourceTree = "<group>";
+		};
+		D29BD9572157D4920044C8D7 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				D23A0F7B21578F00001F81B2 /* Attribute.swift */,
+				D29BD9552157D44C0044C8D7 /* User.swift */,
+				D25E9295214D0749003BD3E6 /* StreamManager.swift */,
+				D29BD9582157D4C90044C8D7 /* StreamManager+StreamDelegate.swift */,
+				D29BD95A2157D4D20044C8D7 /* StreamManager+RosterDelegate.swift */,
+				D29BD95C2157D4E10044C8D7 /* StreamManager+vCardDelegate.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,13 +279,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D29BD9542157D41D0044C8D7 /* CellRegistering.swift in Sources */,
+				D29BD95B2157D4D20044C8D7 /* StreamManager+RosterDelegate.swift in Sources */,
+				D29BD95D2157D4E10044C8D7 /* StreamManager+vCardDelegate.swift in Sources */,
 				D25E9294214D029E003BD3E6 /* LoginRegisterViewController.swift in Sources */,
-				D23A0F842157B2AE001F81B2 /* CellRegistering.swift in Sources */,
 				D25E9296214D0749003BD3E6 /* StreamManager.swift in Sources */,
 				D25E9284214CEF1D003BD3E6 /* ChatViewController.swift in Sources */,
 				D21C52B9214E17F4004839AF /* ChatCell.swift in Sources */,
 				D23A0F7C21578F00001F81B2 /* Attribute.swift in Sources */,
+				D23BC1CF2157D253006C7110 /* ProfileViewController.swift in Sources */,
+				D29BD9592157D4C90044C8D7 /* StreamManager+StreamDelegate.swift in Sources */,
 				D24E87F8215405F60073C018 /* FriendsViewController.swift in Sources */,
+				D29BD9562157D44C0044C8D7 /* User.swift in Sources */,
 				D23A0F802157AF77001F81B2 /* ChatTitleView.swift in Sources */,
 				D23A0F7E2157A5BE001F81B2 /* KeyboardInputView.swift in Sources */,
 				D25E9282214CEF1D003BD3E6 /* AppDelegate.swift in Sources */,

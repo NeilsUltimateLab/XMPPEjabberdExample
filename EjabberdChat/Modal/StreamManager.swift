@@ -28,6 +28,13 @@ class StreamManager: NSObject {
     var connectionTimeOut: TimeInterval = 5
     let rosterStorage = XMPPRosterCoreDataStorage()
     let messageArchiving = XMPPMessageArchivingCoreDataStorage.sharedInstance()
+    let vCardStorage = XMPPvCardCoreDataStorage.init(inMemoryStore: ())
+    
+    lazy var vCardModule: XMPPvCardTempModule = {
+        let module = XMPPvCardTempModule(vCardStorage: vCardStorage!)
+        module.addDelegate(self, delegateQueue: DispatchQueue.main)
+        return module
+    }()
     
     lazy var messageArchivingModule: XMPPMessageArchiving = {
         return XMPPMessageArchiving(messageArchivingStorage: messageArchiving, dispatchQueue: DispatchQueue.main)
@@ -38,8 +45,9 @@ class StreamManager: NSObject {
     var onMessageRecieve: ((String)->Void)?
     var onPresenceUpdate: ((String)->Void)?
     var onRosterRecieve: (([User]) -> Void)?
+    var onvCardRecieve: ((User)->Void)?
     
-    private var users: [User] = []
+    fileprivate(set) var users: [User] = []
     
     var isRegistered: Bool {
         return UserDefaults.standard.bool(forKey: "isRegistered")
@@ -111,116 +119,28 @@ class StreamManager: NSObject {
             stream.send(xMessage)
         }
     }
-}
-
-extension StreamManager: XMPPStreamDelegate {
-    func xmppStreamWillConnect(_ sender: XMPPStream) {
-        print("Will connect")
+    
+    func fetchVCard(for user: User) {
+        guard let jid = user.jid else { return }
+        vCardModule.fetchvCardTemp(for: jid)
     }
     
-    func xmppStreamDidConnect(_ sender: XMPPStream) {
-        print("Did connect")
-        guard let password = creds?.password else { return }
-        do {
-            try sender.authenticate(withPassword: password)
-        } catch {
-            print(error)
-        }
+    func fetchVCard(for jid: XMPPJID) {
+        vCardModule.fetchvCardTemp(for: jid)
     }
     
-    func xmppStreamConnectDidTimeout(_ sender: XMPPStream) {
-        print("Timed out")
+    func updateMyVCard(with data: User) {
+        guard let xVCarTemp = vCardModule.myvCardTemp else { return }
+        xVCarTemp.logo = data.imageData
+        xVCarTemp.nickname = data.nick
+        vCardModule.updateMyvCardTemp(xVCarTemp)
     }
     
-    func xmppStreamDidAuthenticate(_ sender: XMPPStream) {
-        print("Auth done")
-        sender.send(XMPPPresence())
-        xmppRoster.activate(stream)
-        messageArchivingModule.clientSideMessageArchivingOnly = false
-        messageArchivingModule.activate(stream)
-        UserDefaults.standard.set(true, forKey: "isRegistered")
-        UserDefaults.standard.set(creds?.userName, forKey: "userName")
-        UserDefaults.standard.set(creds?.password, forKey: "password")
-        onLogin?()
-        self.rosters()
-        self.update(presence: .available)
-    }
-    
-    func xmppStream(_ sender: XMPPStream, didReceive message: XMPPMessage) {
-        guard let messageBody = message.body else { return }
-        onMessageRecieve?(messageBody)
-    }
-    
-    func xmppStream(_ sender: XMPPStream, didReceive iq: XMPPIQ) -> Bool {
-        print(iq)
-        guard let element = iq.element(forName: "query", xmlnsPrefix: "jabber:iq:roster") else { return false }
-        let items = element.elements(forName: "item")
-        for item in items {
-            print(item)
-        }
-        return false
-    }
-    
-    func xmppStream(_ sender: XMPPStream, didReceive presence: XMPPPresence) {
-        onPresenceUpdate?( presence.nick ?? "")
-    }
-    
-    func xmppStream(_ sender: XMPPStream, didReceiveError error: DDXMLElement) {
-        print(#function)
-        print(error)
-    }
-    
-    func xmppStream(_ sender: XMPPStream, didSend message: XMPPMessage) {
-        print(#function)
-        print(message)
-    }
-    
-    func xmppStream(_ sender: XMPPStream, didSend presence: XMPPPresence) {
-        print(#function)
-        print(presence)
-    }
-    
-    func xmppStream(_ sender: XMPPStream, didNotAuthenticate error: DDXMLElement) {
-        print(#function)
-        print(error)
+    func append(user: User) {
+        self.users.append(user)
     }
 }
 
-extension StreamManager: XMPPRosterDelegate {
-    
-    func xmppRosterDidBeginPopulating(_ sender: XMPPRoster, withVersion version: String) {
-        print(#function)
-    }
-    
-    func xmppRosterDidEndPopulating(_ sender: XMPPRoster) {
-        print(#function)
-        self.onRosterRecieve?(self.users)
-    }
-    
-    func xmppRoster(_ sender: XMPPRoster, didReceiveRosterPush iq: XMPPIQ) {
-        print(#function)
-    }
-    
-    func xmppRoster(_ sender: XMPPRoster, didReceiveRosterItem item: DDXMLElement) {
-        print(#function)
-        print(item)
-        if let userName = item.attributeStringValue(forName: "jid") {
-            let user = User()
-            user.userName = userName
-            user.status = item.attributeStringValue(forName: "ask")
-            users.append(user)
-        }
-    }
-    
-    func xmppRoster(_ sender: XMPPRoster, didReceivePresenceSubscriptionRequest presence: XMPPPresence) {
-        print(#function)
-        print(presence)
-        if let fromJID = presence.from {
-            sender.acceptPresenceSubscriptionRequest(from: fromJID, andAddToRoster: true)
-        }
-    }
-    
-}
 
 extension StreamManager: XMPPMessageArchivingStorage {
     func configure(withParent aParent: XMPPMessageArchiving!, queue: DispatchQueue!) -> Bool {

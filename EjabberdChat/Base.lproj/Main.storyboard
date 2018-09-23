@@ -169,6 +169,33 @@
             </objects>
             <point key="canvasLocation" x="2985" y="5"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="fXf-bV-LDb">
+            <objects>
+                <viewController id="w9m-5G-F3G" customClass="ProfileViewController" customModule="EjabberdChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="APw-rp-7AM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="usa-MG-9Ja">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="usa-MG-9Ja" firstAttribute="leading" secondItem="bgo-FL-2aW" secondAttribute="leading" id="0dD-Ve-QPR"/>
+                            <constraint firstItem="usa-MG-9Ja" firstAttribute="trailing" secondItem="bgo-FL-2aW" secondAttribute="trailing" id="5xc-Rr-4w7"/>
+                            <constraint firstItem="usa-MG-9Ja" firstAttribute="top" secondItem="APw-rp-7AM" secondAttribute="top" id="QLI-oT-Cry"/>
+                            <constraint firstAttribute="bottom" secondItem="usa-MG-9Ja" secondAttribute="bottom" id="jW0-xK-8LD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bgo-FL-2aW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jb9-MD-yJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3671.1999999999998" y="4.4334975369458132"/>
+        </scene>
         <!--Friends View Controller-->
         <scene sceneID="zVo-an-STV">
             <objects>

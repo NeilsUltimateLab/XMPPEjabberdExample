@@ -39,6 +39,15 @@ class ChatTitleView: UIView {
         }
     }
     
+    func updateImage(with data: Data) {
+        if let image = UIImage(data: data) {
+            self.imageView.isHidden = false
+            self.imageView.image = image
+        } else {
+            self.imageView.isHidden = true
+        }
+    }
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
