@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" id="iN0-l3-epB" customClass="ChatTitleView" customModule="EjabberdChat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="197" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleAspectFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QJS-6W-l7T">
+                    <rect key="frame" x="8" y="0.0" width="181" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="czf-5v-6pJ">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="7Vz-Tp-zcE"/>
+                                <constraint firstAttribute="width" secondItem="czf-5v-6pJ" secondAttribute="height" multiplier="1:1" id="uTd-8l-qgs"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="center" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xaB-VE-bux">
+                            <rect key="frame" x="58" y="0.0" width="123" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZQ-0t-w4L">
+                                    <rect key="frame" x="0.0" y="0.0" width="123" height="36.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="254" verticalHuggingPriority="253" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTt-VD-M4N">
+                                    <rect key="frame" x="0.0" y="36.5" width="123" height="13.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QJS-6W-l7T" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="1Ya-Ad-tnP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="QJS-6W-l7T" secondAttribute="bottom" id="Ogc-fu-3AM"/>
+                <constraint firstItem="QJS-6W-l7T" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="jHx-cr-owg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QJS-6W-l7T" secondAttribute="trailing" constant="8" id="xoy-1e-ep8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imageView" destination="czf-5v-6pJ" id="i9x-ky-JFO"/>
+                <outlet property="nameLabel" destination="TZQ-0t-w4L" id="hZ2-Nw-Qb4"/>
+                <outlet property="statusLabel" destination="tTt-VD-M4N" id="7Aq-H3-g7L"/>
+            </connections>
+            <point key="canvasLocation" x="-64.5" y="-257"/>
+        </view>
+    </objects>
+</document>

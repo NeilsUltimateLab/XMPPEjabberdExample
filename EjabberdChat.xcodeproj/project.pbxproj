@@ -10,6 +10,11 @@
 		807E7EA119920A5D139D9DA6 /* Pods_EjabberdChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34AAECF4B0D322AD393DB60 /* Pods_EjabberdChat.framework */; };
 		D21C52B9214E17F4004839AF /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C52B7214E17F4004839AF /* ChatCell.swift */; };
 		D21C52BA214E17F4004839AF /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D21C52B8214E17F4004839AF /* ChatCell.xib */; };
+		D23A0F7C21578F00001F81B2 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A0F7B21578F00001F81B2 /* Attribute.swift */; };
+		D23A0F7E2157A5BE001F81B2 /* KeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A0F7D2157A5BE001F81B2 /* KeyboardInputView.swift */; };
+		D23A0F802157AF77001F81B2 /* ChatTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A0F7F2157AF77001F81B2 /* ChatTitleView.swift */; };
+		D23A0F822157AF87001F81B2 /* ChatTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23A0F812157AF87001F81B2 /* ChatTitleView.xib */; };
+		D23A0F842157B2AE001F81B2 /* CellRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A0F832157B2AD001F81B2 /* CellRegistering.swift */; };
 		D24E87F8215405F60073C018 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E87F7215405F60073C018 /* FriendsViewController.swift */; };
 		D25E9282214CEF1D003BD3E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E9281214CEF1D003BD3E6 /* AppDelegate.swift */; };
 		D25E9284214CEF1D003BD3E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E9283214CEF1D003BD3E6 /* ViewController.swift */; };
@@ -26,6 +31,11 @@
 		B34AAECF4B0D322AD393DB60 /* Pods_EjabberdChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EjabberdChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21C52B7214E17F4004839AF /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		D21C52B8214E17F4004839AF /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		D23A0F7B21578F00001F81B2 /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		D23A0F7D2157A5BE001F81B2 /* KeyboardInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInputView.swift; sourceTree = "<group>"; };
+		D23A0F7F2157AF77001F81B2 /* ChatTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleView.swift; sourceTree = "<group>"; };
+		D23A0F812157AF87001F81B2 /* ChatTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTitleView.xib; sourceTree = "<group>"; };
+		D23A0F832157B2AD001F81B2 /* CellRegistering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellRegistering.swift; sourceTree = "<group>"; };
 		D24E87F7215405F60073C018 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		D25E927E214CEF1D003BD3E6 /* EjabberdChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EjabberdChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25E9281214CEF1D003BD3E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,9 +100,14 @@
 			children = (
 				D25E9281214CEF1D003BD3E6 /* AppDelegate.swift */,
 				D25E9283214CEF1D003BD3E6 /* ViewController.swift */,
+				D23A0F7B21578F00001F81B2 /* Attribute.swift */,
 				D25E9295214D0749003BD3E6 /* StreamManager.swift */,
 				D24E87F7215405F60073C018 /* FriendsViewController.swift */,
 				D21C52B7214E17F4004839AF /* ChatCell.swift */,
+				D23A0F7D2157A5BE001F81B2 /* KeyboardInputView.swift */,
+				D23A0F832157B2AD001F81B2 /* CellRegistering.swift */,
+				D23A0F7F2157AF77001F81B2 /* ChatTitleView.swift */,
+				D23A0F812157AF87001F81B2 /* ChatTitleView.xib */,
 				D21C52B8214E17F4004839AF /* ChatCell.xib */,
 				D25E9293214D029E003BD3E6 /* LoginRegisterViewController.swift */,
 				D25E9285214CEF1D003BD3E6 /* Main.storyboard */,
@@ -166,6 +181,7 @@
 				D25E928C214CEF1E003BD3E6 /* LaunchScreen.storyboard in Resources */,
 				D21C52BA214E17F4004839AF /* ChatCell.xib in Resources */,
 				D25E9289214CEF1E003BD3E6 /* Assets.xcassets in Resources */,
+				D23A0F822157AF87001F81B2 /* ChatTitleView.xib in Resources */,
 				D25E9287214CEF1D003BD3E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,10 +241,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D25E9294214D029E003BD3E6 /* LoginRegisterViewController.swift in Sources */,
+				D23A0F842157B2AE001F81B2 /* CellRegistering.swift in Sources */,
 				D25E9296214D0749003BD3E6 /* StreamManager.swift in Sources */,
 				D25E9284214CEF1D003BD3E6 /* ViewController.swift in Sources */,
 				D21C52B9214E17F4004839AF /* ChatCell.swift in Sources */,
+				D23A0F7C21578F00001F81B2 /* Attribute.swift in Sources */,
 				D24E87F8215405F60073C018 /* FriendsViewController.swift in Sources */,
+				D23A0F802157AF77001F81B2 /* ChatTitleView.swift in Sources */,
+				D23A0F7E2157A5BE001F81B2 /* KeyboardInputView.swift in Sources */,
 				D25E9282214CEF1D003BD3E6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

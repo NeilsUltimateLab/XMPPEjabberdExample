@@ -9,10 +9,12 @@
 import UIKit
 import XMPPFramework
 
+typealias ArchivedMessage = XMPPMessageArchiving_Message_CoreDataObject
+
 class StreamManager: NSObject {
     
     static let shared = StreamManager()
-    var host: String = "192.168.43.115"
+    var host: String = "172.20.10.4"
     var port: UInt16 = 5222
     var stream: XMPPStream!
     var creds: LoginCreds? {
@@ -79,11 +81,36 @@ class StreamManager: NSObject {
         xmppRoster.fetch()
     }
     
-    func addRoster(userName: String, nickName: String? = nil) {
-        guard let jid = XMPPJID(string: userName) else { return }
-        xmppRoster.addUser(jid, withNickname: nickName, groups: nil, subscribeToPresence: true)
+    func update(presence: Presence) {
+        switch presence {
+        case .available:
+            let xPresence = XMPPPresence(type: "available")
+            xPresence.addNick("Online")
+            stream.send(xPresence)
+            break
+        case .unavailable:
+            let xPresence = XMPPPresence(type: "unavailable")
+            stream.send(xPresence)
+            break
+        case .typing(to: let user):
+            let xPresence = XMPPPresence(type: "available", to: user.jid)
+            xPresence.addNick("typing...")
+            stream.send(xPresence)
+        case .availableTo(to: let user):
+            let xPresence = XMPPPresence(type: "available", to: user.jid)
+            xPresence.addNick("Online")
+            stream.send(xPresence)
+        }
     }
     
+    func send(_ item: Chat) {
+        switch item {
+        case .chat(body: let message, to: let user):
+            let xMessage = XMPPMessage(type: "chat", to: user.jid)
+            xMessage.addBody(message)
+            stream.send(xMessage)
+        }
+    }
 }
 
 extension StreamManager: XMPPStreamDelegate {
@@ -116,6 +143,7 @@ extension StreamManager: XMPPStreamDelegate {
         UserDefaults.standard.set(creds?.password, forKey: "password")
         onLogin?()
         self.rosters()
+        self.update(presence: .available)
     }
     
     func xmppStream(_ sender: XMPPStream, didReceive message: XMPPMessage) {
@@ -134,10 +162,7 @@ extension StreamManager: XMPPStreamDelegate {
     }
     
     func xmppStream(_ sender: XMPPStream, didReceive presence: XMPPPresence) {
-        print(presence)
-        guard let presenceType = presence.nick else { return }
-        print(presenceType)
-        onPresenceUpdate?(presenceType)
+        onPresenceUpdate?( presence.nick ?? "")
     }
     
     func xmppStream(_ sender: XMPPStream, didReceiveError error: DDXMLElement) {
@@ -153,6 +178,11 @@ extension StreamManager: XMPPStreamDelegate {
     func xmppStream(_ sender: XMPPStream, didSend presence: XMPPPresence) {
         print(#function)
         print(presence)
+    }
+    
+    func xmppStream(_ sender: XMPPStream, didNotAuthenticate error: DDXMLElement) {
+        print(#function)
+        print(error)
     }
 }
 
@@ -211,5 +241,20 @@ extension StreamManager {
         var jid: XMPPJID? {
             return XMPPJID(string: userName)
         }
+    }
+}
+
+extension StreamManager {
+    enum Presence {
+        case available
+        case unavailable
+        case typing(to: User)
+        case availableTo(to: User)
+    }
+}
+
+extension StreamManager {
+    enum Chat {
+        case chat(body: String, to: User)
     }
 }

@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import XMPPFramework
 
 class User {
     var userName: String = ""
     var status: String?
     var presence: String?
+}
+
+extension User {
+    var jid: XMPPJID? {
+        return XMPPJID(string: userName)
+    }
 }
 
 class FriendsViewController: UIViewController {
@@ -48,7 +55,7 @@ extension FriendsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = dataSource[indexPath.row]
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        nextVC.reciept = user
+        nextVC.recipient = user
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
