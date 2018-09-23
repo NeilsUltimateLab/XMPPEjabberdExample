@@ -30,6 +30,8 @@ class KeyboardInputView: UIView {
         self.textView.layer.borderWidth = 1
         self.textView.textContainerInset.left = 8
         self.textView.textContainerInset.right = 8
+        self.textView.textContainerInset.top = 4
+        self.textView.textContainerInset.bottom = 4
         self.textView.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         self.textView.delegate = self
         self.textView.isScrollEnabled = false
@@ -38,7 +40,10 @@ class KeyboardInputView: UIView {
     override var intrinsicContentSize: CGSize {
         let maxSize = CGSize(width: textView.frame.width, height: CGFloat.infinity)
         let textSize = self.textView.sizeThatFits(maxSize)
-        return CGSize(width: self.frame.width, height: textSize.height + 16)
+        self.heightConstraint.constant = textSize.height
+        
+        let size = CGSize(width: self.frame.width, height: textSize.height + 16)
+        return size
     }
     
     var text: String? {

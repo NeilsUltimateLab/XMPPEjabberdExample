@@ -54,7 +54,7 @@ class FriendsViewController: UIViewController {
 extension FriendsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = dataSource[indexPath.row]
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ChatViewController
         nextVC.recipient = user
         self.navigationController?.pushViewController(nextVC, animated: true)
     }

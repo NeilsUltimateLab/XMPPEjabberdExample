@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ChatViewController.swift
 //  EjabberdChat
 //
 //  Created by Neil Jain on 15/09/18.
@@ -10,7 +10,7 @@ import UIKit
 import XMPPFramework
 
 
-class ViewController: UIViewController {
+class ChatViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var keyboardInputView: KeyboardInputView!
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         let atts = Attributes(font: UIFont.systemFont(ofSize: 17),
                               maximumWidth: self.collectionView.frame.width - 80,
                               maximumHeight: CGFloat.infinity,
-                              textContentInsets: UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12))
+                              textContentInsets: UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16))
         return atts
     }()
     
@@ -64,6 +64,7 @@ class ViewController: UIViewController {
         self.keyboardInputView.onTextCharacterChange = { [weak self] in
             guard let reciept = self?.recipient else { return }
             StreamManager.shared.update(presence: .typing(to: reciept))
+            self?.reloadInputViews()
         }
     }
     
@@ -102,14 +103,14 @@ class ViewController: UIViewController {
     func keyboardNotifications() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { (noti) in
             guard let keyboardFrame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-            //self.bottomConstraint.constant = -keyboardFrame.height
             self.collectionView.contentInset.bottom = keyboardFrame.height
+            self.collectionView.scrollIndicatorInsets.bottom = keyboardFrame.height
             self.view.layoutIfNeeded()
         }
         
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { (_) in
             self.collectionView.contentInset.bottom = 0
-            //self.bottomConstraint.constant = 0
+            self.collectionView.scrollIndicatorInsets.bottom = 0
             self.view.layoutIfNeeded()
         }
         
@@ -127,6 +128,11 @@ class ViewController: UIViewController {
         } catch {
             print(error)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.resignFirstResponder()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -156,6 +162,9 @@ class ViewController: UIViewController {
     }
     
     func scrollToLast(animated: Bool = false) {
+        guard self.collectionView.numberOfSections > 0 else {
+            return
+        }
         let indexSection = self.collectionView.numberOfSections - 1
         let indexItem = self.collectionView.numberOfItems(inSection: indexSection) - 1
         let indexPath = IndexPath(item: indexItem, section: indexSection)
@@ -163,11 +172,11 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension ChatViewController: UICollectionViewDelegate {
     
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let text = self.fetchResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? XMPPMessageArchiving_Message_CoreDataObject else { return .zero }
         let body = text.message.body!
@@ -181,7 +190,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension ChatViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return fetchResultsController?.sections?.count ?? 0
     }
@@ -199,7 +208,7 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: NSFetchedResultsControllerDelegate {
+extension ChatViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         self.collectionView.reloadData()
         self.scrollToLast(animated: true)

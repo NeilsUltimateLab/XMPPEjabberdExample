@@ -26,12 +26,14 @@ class ChatTitleView: UIView {
     }
     
     func updateState(with state: String) {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.5) {
             if state.isEmpty {
                 self.statusLabel.isHidden = true
+                self.statusLabel.alpha = 0
             } else {
                 self.statusLabel.text = state
                 self.statusLabel.isHidden = false
+                self.statusLabel.alpha = 1
             }
             self.layoutIfNeeded()
         }
